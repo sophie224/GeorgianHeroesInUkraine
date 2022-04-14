@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.web-fonts.ge/fonts/dejavu-sans/css/dejavu-sans.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Corona Virus Stories</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: black;
+            font-family: 'DejaVu Sans';
+            color: #999;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        header div {
+            width: 100px;
+            margin: 0 auto;
+            padding-top: 1%;
+        }
+
+        header div img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .non_avatar img {
+            width: 34px;
+            height: 100%;
+
+        }
+
+        .project_title {
+            font-size: 2.5vw;
+            margin: 5% auto;
+            color: white;
+        }
+
+        .main__child {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            height: 100%;
+            position: relative;
+        }
+
+        .main-title {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0 8.52995% 6.1706%;
+        }
+
+        .authors-container p {
+            font-size: 1.2rem;
+        }
+
+        .description-container {
+            margin-bottom: 7%;
+
+        }
+
+        .description-container p {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .authors-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .description-container a {
+            color: #e77454;
+            text-decoration: none;
+        }
+
+        .authors-container h2 {
+            color: white
+        }
+
+        .authors-container:before {
+            border-top: 2px solid #e77454;
+            content: "";
+            display: block;
+            margin: 1rem auto;
+            width: 500px;
+        }
+
+        .avatar {
+            position: relative;
+        }
+
+        .avatar img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .avatar-image {
+            opacity: 1;
+
+        }
+
+        .avatar-image:hover {
+            transform: scale(1.3);
+            border: 2px solid #e77454;
+            opacity: 1 !important;
+            transition: 1s;
+            cursor: pointer;
+            display: inline-block;
+            z-index: 5;
+        }
+
+        .avatars-main-container {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        }
+
+        .avatar,
+        .non_avatar {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .non_avatar div {
+            background: #404040;
+            height: 40%;
+            width: 40%;
+            border-radius: 20px;
+        }
+
+        .entry-inner {
+            font-family: 'DejaVu Sans';
+            color: #666;
+            font-size: .55rem;
+            text-align: center;
+            display: none;
+            position: absolute;
+            top: 60%;
+            left: calc(50% - 7em);
+            right: auto;
+            width: 12em;
+            height: auto;
+            padding: 3em 1em 1em 1em;
+            border-radius: 0.25em;
+            background-color: white;
+            transition: 1s;
+            box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.25);
+            z-index: 4;
+
+        }
+
+        .entry-inner h2 {
+            color: black;
+            line-height: 1.2;
+            padding-bottom: 0.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 1px solid #999;
+        }
+
+        .text-section,
+        .text-section1,
+        .text-section2 {
+            width: 80%;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .text-section p,
+        .text-section1 p,
+        .text-section2 p {
+            font-size: 2rem;
+            padding: 1% 0;
+        }
+
+        .info-url a {
+            font-size: 0.7vw;
+            color: #e77454;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .vertical-align-header {
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            height: 60px;
+            width: 100%;
+        }
+
+        .avatars-vertical-container {
+            height: 100%;
+            position: absolute;
+            flex-wrap: nowrap;
+            top: 0;
+            transition: all 500ms;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vertical-align-avatars {
+            width: 50px;
+            height: 50px;
+            padding: 20px;
+        }
+
+        .vertical-align-avatars:hover {
+            opacity: 1;
+            z-index: 5;
+            transform: scale(1.2);
+        }
+
+        .text-section,
+        .text-section1,
+        .text-section2 {
+            margin-top: 10%;
+        }
+
+        .active {
+
+            transition: 1s;
+            opacity: 1 !important;
+        }
+
+        .profile-circle {
+            left: 0px;
+        }
+
+        .section_common_container {
+            max-width: 50%;
+            margin: 5% auto;
+        }
+
+        .username {
+            color: white;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2%;
+            padding-top: 14%;
+        }
+
+        .history-age {
+            color: #999;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 5%;
+        }
+
+        .username:before {
+            border-top: 2px solid #e77454;
+            content: "";
+            display: block;
+            margin: 1rem auto;
+            width: 50%;
+        }
+
+        .text {
+            font-size: 1.8rem;
+        }
+
+        .person-image {
+            width: 50%;
+        }
+
+        .person-image img {
+            width: 350px;
+            margin: 0 20px 15px 0px;
+            float: left;
+        }
+
+        .person-history {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            margin-bottom: 5%;
+        }
+
+        /*scroll to top*/
+
+
+        #scroll {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            background-color: #e77454;
+            color: #fefeff;
+            text-indent: -9999px;
+            display: none;
+            -webkit-border-radius: 60px;
+            -moz-border-radius: 60px;
+            border-radius: 60px
+        }
+
+        #scroll span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -16px;
+            height: 1px;
+            width: 0;
+            border: 10px solid transparent;
+            border-bottom-color: #ffffff;
+        }
+
+        #scroll:hover {
+            background-color: #e74c3c;
+            opacity: 1;
+            filter: "alpha(opacity=100)";
+            -ms-filter: "alpha(opacity=100)";
+        }
+
+
+        /*scroll to top end*/
+
+
+
+        /*loader*/
+        .loader-holder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: white;
+            z-index: 1000;
+        }
+
+        .lds-roller {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .lds-roller div {
+            animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            transform-origin: 40px 40px;
+        }
+
+        .lds-roller div:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #d56003;
+            margin: -4px 0 0 -4px;
+        }
+
+        .lds-roller div:nth-child(1) {
+            animation-delay: -0.036s;
+        }
+
+        .lds-roller div:nth-child(1):after {
+            top: 63px;
+            left: 63px;
+        }
+
+        .lds-roller div:nth-child(2) {
+            animation-delay: -0.072s;
+        }
+
+        .lds-roller div:nth-child(2):after {
+            top: 68px;
+            left: 56px;
+        }
+
+        .lds-roller div:nth-child(3) {
+            animation-delay: -0.108s;
+        }
+
+        .lds-roller div:nth-child(3):after {
+            top: 71px;
+            left: 48px;
+        }
+
+        .lds-roller div:nth-child(4) {
+            animation-delay: -0.144s;
+        }
+
+        .lds-roller div:nth-child(4):after {
+            top: 72px;
+            left: 40px;
+        }
+
+        .lds-roller div:nth-child(5) {
+            animation-delay: -0.18s;
+        }
+
+        .lds-roller div:nth-child(5):after {
+            top: 71px;
+            left: 32px;
+        }
+
+        .lds-roller div:nth-child(6) {
+            animation-delay: -0.216s;
+        }
+
+        .lds-roller div:nth-child(6):after {
+            top: 68px;
+            left: 24px;
+        }
+
+        .lds-roller div:nth-child(7) {
+            animation-delay: -0.252s;
+        }
+
+        .lds-roller div:nth-child(7):after {
+            top: 63px;
+            left: 17px;
+        }
+
+        .lds-roller div:nth-child(8) {
+            animation-delay: -0.288s;
+        }
+
+        .lds-roller div:nth-child(8):after {
+            top: 56px;
+            left: 12px;
+        }
+
+        @keyframes lds-roller {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /*loader end*/
+
+
+
+        /*responsive*/
+        /* @media only screen and (max-width: 1440px) {
+            .vertical-align-avatars img {
+                height: 19px;
+            }
+        }
+
+        @media only screen and (max-width: 1280px) {
+            .vertical-align-avatars img {
+                height: 18px;
+            }
+        } */
+
+        @media only screen and (max-width: 1080px) {
+            /* .vertical-align-avatars img {
+                height: 12px;
+            } */
+
+            .vertical-align-header {
+                height: 70px;
+            }
+
+            .section_common_container {
+                max-width: 80%;
+            }
+
+            header div {
+                width: 150px;
+            }
+        }
+
+        /* @media only screen and (max-width: 760px) {
+            .vertical-align-avatars img {
+                height: 10px;
+            }
+
+            .vertical-align-header {
+                height: 40px;
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="loader-holder">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <article class="main-title">
+        <div class="project_title">
+            <p>სათაური???</p>
+        </div>
+        <div class="description-container">
+            <p>
+                ომის დაწყების პირველივე დღეებიდან, უკრაინაში რამდენიმე ასეული ქართველი მოხალისე იბრძვის. მოხალისეთა
+                პირველი ნაკადი საქართველოდან უკრაინაში მარტის დასაწყისში წავიდა. ისინი სხვადასხვა ბატალიონში ირიცხებიან
+                და მონაწილეობენ საომარ მოქმედებებში, ფრონტის წინა ხაზზე. ქართველი მებრძოლების დაღუპვის შესახებ პირველი
+                ინფორმაცია 18 მარტს გავრცელდა.
+            </p>
+            <br><br>
+            <p>
+                რუსეთი უკრაინაში ომს 24 თებერვლიდან აწარმოებს. რუსეთის პრეზიდენტის, ვლადიმირ პუტინის სიტყვებით,
+                „სპეციალური სამხედრო ოპერაციის“ მიზანია უკრაინის „დენაციფიკაცია“, „დემილიტარიზაცია“ და ასევე უკრაინის
+                უარი ნატოში გაწევრიანებაზე. უკრაინის ხელისუფლების განცხადებით, ომს უკვე ემსხვერპლა ათასობით მშვიდობიანი
+                მოქალაქე. დაღუპულთა შორის არიან ბავშვები. მიწასთანაა გასწორებული რამდენიმე ქალაქი კიევის ოლქში.
+            </p>
+            <br><br>
+            <p>
+                ამ პროექტში რადიო თავისუფლება აგროვებს უკრაინაში დაღუპული ქართველი მოხალისეების ამბებს. 
+            </p>
+        </div>
+
+        <div class="authors-container">
+            <h2>ავტორი </h2>
+            <p>ნინო თარხნიშვილი </p>
+        </div>
+    </article>
+
+    <main>
+        <div class="main__child">
+
+            <div class="avatars-main-container">
+            </div>
+        </div>
+    </main>
+
+    <section class="section_common_container">
+
+    </section>
+
+    <footer>
+        <div class="authors-container">
+            <h2>ავტორი </h2>
+            <p>ნინო თარხნიშვილი </p>
+            <br>
+            <h2>რედაქტორი </h2>
+            <p>ნინო ჯაფიაშვილი </p>
+            <br>
+            <h2>ილუსტრატორი</h2>
+            <p>ანა ჯიბლაძე</p>
+            <br>
+            <h2>ვებ-დეველოპერი</h2>
+            <p>სოფიკო ფხიკიძე</p>
+        </div>
+
+    </footer>
+
+    <a href="#" id="scroll" style="display: none;"><span></span></a>
+
+</body>
+<script>
+    $(document).ready(function () {
+        mainFuncForMU();
+        setTimeout(() => {
+            $(".loader-holder").css("display", "none");
+        }, 100);
+        drawPersonSection();
+        
+    });
+
+    let peoplesInfo = [
+        {
+            id: 0,
+            data_id: 0,
+            mainUserId: 1,
+            userName: 'დავით რატიანი',
+            age: '53 წლის',
+            portrait_img_src: 'https://gdb.rferl.org/7903A706-87AC-408C-91AF-339082A18830.jpg',
+        },
+
+        {
+            id: 1,
+            data_id: 1,
+            mainUserId: 2,
+            userName: 'გია ბერიაშვილი',
+            age: '45 წლის',
+            portrait_img_src: 'https://gdb.rferl.org/7903A706-87AC-408C-91AF-339082A18830.jpg',
+        },
+
+        {
+            id: 2,
+            data_id: 2,
+            mainUserId: 3,
+            userName: 'ბახვა ჩიქობავა',
+            age: '54 წლის',
+            portrait_img_src: 'https://gdb.rferl.org/7903A706-87AC-408C-91AF-339082A18830.jpg',
+        },
+       
+        {
+            id: 3,
+            data_id: 3,
+            mainUserId: 4,
+            userName: 'დავით გობეჯიშვილი',
+            age: '47 წლის',
+            portrait_img_src: 'https://gdb.rferl.org/7903A706-87AC-408C-91AF-339082A18830.jpg',
+        },
+
+        {
+
+            id: 4,
+            data_id: 4,
+            mainUserId: 5,
+            userName: 'დავით მენაბდიშვილი',
+            age: '47 წლის',
+            portrait_img_src: 'https://gdb.rferl.org/7903A706-87AC-408C-91AF-339082A18830.jpg',
+        },
+
+        {
+            id: 5,
+            data_id: 5,
+            mainUserId: 6,
+            userName: 'ნიკოლოზ შანავა',
+            age: '21 წლის',
+            portrait_img_src: 'https://gdb.rferl.org/7903A706-87AC-408C-91AF-339082A18830.jpg',
+        },
+    ]
+
+    let personsHistoryArray = [
+        {
+            id: 0,
+            data_id: 1,
+            mainUserId: 2,
+            age: '45 წლის',
+            img_src: 'https://gdb.rferl.org/E4375905-A181-4399-8104-B38684F2C227.jpg',
+            title: 'გია ბერიაშვილი',
+            text: 'დაიღუპა 18 მარტს, კიევის ჩრდილო-დასავლეთით, ირპენის ფრონტზე. ის უცხოელ მოხალისეთა რაზმში იბრძოდა. თბილისში 26 მარტს ჩამოასვენეს. <br> <br> დარჩა მეუღლე ქეთი ხელაძე და ერთი შვილი <br><br> უკრაინაში, 5 მარტს, გამთენიისას ისე წავიდა, რომ ცოლსა და შვილს ეგონა, ინგლისში, ბიზნესის საქმეებზე მიდიოდა. 5 მარტს, დილის 11 საათისთვის ცოლს პოლონეთის საზღვრიდან დაურეკა და უთხრა, რომ სინამდვილეში ლვოვში ჩავიდა მოხალისედ.  <br><br> ქეთის მარტის შუა რიცხვებამდე ეგონა, რომ გია მართლაც ლვოვში იყო და უკრაინელ ლტოლვილებს საკვებსა და პირველადი საჭიროების ნივთებს ურიგებდა, პოლონეთში გადასვლაში ეხმარებოდა. <br> <br> „ასე მჯეროდა, სანამ ფეისბუკში არ გავრცელდა მისი ფოტო ირპენიდან, ტანკთან გადაღებული. დღეში სამჯერ და ოთხჯერ გვირეკავდა, თან ვიდეოთვალით, მაგრამ არასდროს გვენახვებოდა სამხედრო ფორმით. მაისური ან ჟაკეტი ეცვა ხოლმე. თურმე ფრონტის წინა ხაზზე იყო. ტანკთან გადაღებული ფოტო რომ ვნახე, სიმართლე გითხრათ, ვერ ვიცანი, ფორმა ეცვა, თავზე ჩაფხუტი ეხურა. გიას გადავუგზავნე ფოტო და მივწერე, ეს შენ ხარ-მეთქი? კი, მე ვარო, სიცილის „სმაილები“ გამომიგზავნა. ეს ისე გადავიღეთ, ტანკთანო. დავუჯერე. გია, ისეთ საშინელებებს აცხადებენ, მეშინია-მეთქი. ის იქიდან მწერდა. ნუ უჯერებ, ჩვენთან არაფერი ხდება, ჩვენ საკვებს და მედიკამენტებს ვარიგებთ, ლტოლვილები მანქანით გადაგვყავს პოლონეთშიო“. <br><br> უკანასკნელად გიამ ქეთის, სიკვდილამდე რამდენიმე საათით ადრე, 17 მარტს, მხოლოდ ორი სიტყვა მისწერა. ქეთის ქმრის დაღუპვის ამბავი თანამშრომელმა შეატყობინა: <br><br> უკანასკნელად გიამ ქეთის, სიკვდილამდე რამდენიმე საათით ადრე, 17 მარტს, მხოლოდ ორი სიტყვა მისწერა. ქეთის ქმრის დაღუპვის ამბავი თანამშრომელმა შეატყობინა: <br><br> გია ბერიაშვილი იბრძოდა 2008 წლის ომშიც: <br><br> „პირველი თაობის სპეცრაზმელი იყო. 1999 წლიდან ამერიკელი ინსტრუქტორების წვრთნას გადიოდა. 2020 წლამდე მუშაობდა შინაგან საქმეთა სამინისტროში. პოლკოვნიკი იყო. 2008 წლის ომში ორი ორდენი აქვს მიღებული მამაცობისა და ღირსებისთვის“. <br><br>როგორც გიას თანამებრძოლებმა უთხრეს ქეთის, 18 მარტს, როცა რამდენიმესაათიანი ძებნის შემდეგ, გია იპოვეს, მას გული ისევ უცემდა.<br><br>გია ბერიაშვილი 26 მარტს, თბილისის ზღვის სასაფლაოზე, სამხედრო პატივით დაკრძალეს.  '
+        },
+
+        {
+            id: 1,
+            data_id: 2,
+            mainUserId: 3,
+            age: '54 წლის',
+            img_src: 'https://gdb.rferl.org/E4375905-A181-4399-8104-B38684F2C227.jpg',
+            title: 'ბახვა ჩიქობავა',
+            text: 'დაიღუპა 19 მარტს, მარიუპოლში, სავარაუდოდ, დაბომბვის დროს. <br> <br> ბახვა ჩიქობავას დარჩა ცოლი და ორი შვილი.  <br><br> ის „აზოვის“ ბატალიონში იბრძოდა. 24 თებერვალს, რუსული ჯარის უკრაინაში შეჭრამდე, სამხედრო ინსტრუქტორი იყო. ძირითადად, რუსეთის მიერ ყირიმის ანექსიის პერიოდში შექმნილი „აზოვის“ ბატალიონის ახალბედა წევრებს წვრთნიდა. ბახვა ჩიქობავა 2008 წლის რუსეთ-საქართველოს და 1992-1993 წლებში აფხაზეთის ომებშიც მონაწილეობდა. „ნაციონალური მოძრაობის“ ხელისუფლებაში ყოფნის დროს, ის შინაგან საქმეთა სამინისტროს განსაკუთრებულ დავალებათა დეპარტამენტის სამეგრელო-ზემო სვანეთის სამხარეო სამმართველოს (სპეცრაზმი) უფროსი იყო. <br><br> 2012 წელს, საქართველოში ხელისუფლების შეცვლის შემდეგ, ბახვა ჩიქობავა გარკვეული პერიოდის განმავლობაში დაკავებული იყო. უკრაინაში 2014 წლიდან წავიდა. <br><br>ნინო ორდენიძე, ბახვა ჩიქობავას მეგობარი, რადიო თავისუფლებას ეუბნება, რომ მისგან ბოლო მესიჯი 17 მარტს მიიღო: <br> <br> „კარგად ვართ, ყველაფერი კარგად არის… დიდი შემართებით იყო. თუმცა, თავიდან უფრო… ბოლოს, ეტყობა, ძალიან საშინელი მდგომარეობა რომ იყო, მხოლოდ [ასე] გვწერდა: კარგად ვარ, ცოცხალი ვარ, კარგად ვარ, ცოცხალი ვარ“. <br><br> მარიუპოლში მძიმე სამხედრო ბრძოლების გამო ბახვა ჩიქობავას გადმოსვენება საქართველოში ვერ მოხერხდა. ცხედარი, სავარაუდოდ, ქალაქშივე, რუსი სამხედროებისთვის „შეუმჩნეველ ადგილას არის დამალული“. '
+        },
+
+        {
+            id: 2,
+            data_id: 3,
+            mainUserId: 4,
+            age: '47 წლის',
+            img_src: 'https://gdb.rferl.org/E4375905-A181-4399-8104-B38684F2C227.jpg',
+            title: 'დავით გობეჯიშვილი',
+            text: 'დაიღუპა 25 მარტს, ქალაქ ირპენთან შეტაკებებისას. დავითი სოხუმიდან დევნილი, ომის ვეტერანი, აფხაზეთის და 2008 წლის რუსეთ-საქართველოს ომების მონაწილე იყო და უკრაინაში მოხალისედ იბრძოდა.  <br> <br> დარჩა ცოლი და ორი შვილი. <bდავით გობეჯიშვილი 22 მარტს უკრაინაში პოლონეთიდან ჩავიდა. <br><br>დავით გობეჯიშვილი 22 მარტს უკრაინაში პოლონეთიდან ჩავიდა. <br><br> დავით გობეჯიშვილმა პოლონეთის გავლით ამერიკაში გასაფრენი ბილეთი ჯერ კიდევ რამდენიმე თვის წინ იყიდა. თუმცა, უკრაინაში ომის დაწყების დღიდან, ოჯახის წევრებს უთხრა, რომ უკრაინაში აპირებდა წასვლას.   <br><br> მარიკა კუბლაშვილი, დავითის ცოლი: <br><br> „საშინლად განიცდიდა იმას, რაც უკრაინაში ხდებოდა, მაგრამ ვერ ვიფიქრებდი, რომ დიდი ხნის წინ დაწყობილ გეგმებს, რომელიც ამერიკას უკავშირდებოდა, ასე ერთი ხელის მოსმით შეცვლიდა. ამერიკაში წასვლამდე, რამდენიმე დღე უწევდა პოლონეთში დარჩენა. დაგვირეკა და გვითხრა, რომ გადაიფიქრა ამერიკაში წასვლა და უკრაინაში მიდიოდა. ვეხვეწე, არ წასულიყო, მაგრამ სულ ტყუილად. მერე ჩვენს შვილს, მარის ვთხოვე, იქნებ შენ დაელაპარაკო-მეთქი. სამი დღე ეხვეწა მარი, მაგრამ უშედეგოდ. ბოლოს მითხრა, მაინცდამაინც ჩვენს შვილებამდე, მაინცდამაინც მარიმდე უნდა მოვიდნენ, რომ იარაღი ავიღო ხელშიო? მივხვდი, რომ აზრს ვეღარ შევაცვლევინებდით“. <br><br> „საშინლად განიცდიდა იმას, რაც უკრაინაში ხდებოდა, მაგრამ ვერ ვიფიქრებდი, რომ დიდი ხნის წინ დაწყობილ გეგმებს, რომელიც ამერიკას უკავშირდებოდა, ასე ერთი ხელის მოსმით შეცვლიდა. ამერიკაში წასვლამდე, რამდენიმე დღე უწევდა პოლონეთში დარჩენა. დაგვირეკა და გვითხრა, რომ გადაიფიქრა ამერიკაში წასვლა და უკრაინაში მიდიოდა. ვეხვეწე, არ წასულიყო, მაგრამ სულ ტყუილად. მერე ჩვენს შვილს, მარის ვთხოვე, იქნებ შენ დაელაპარაკო-მეთქი. სამი დღე ეხვეწა მარი, მაგრამ უშედეგოდ. ბოლოს მითხრა, მაინცდამაინც ჩვენს შვილებამდე, მაინცდამაინც მარიმდე უნდა მოვიდნენ, რომ იარაღი ავიღო ხელშიო? მივხვდი, რომ აზრს ვეღარ შევაცვლევინებდით“. <br><br> ის 25 მარტს, უკრაინაში ჩასვლიდან ოთხი დღის თავზე, ფრონტის ხაზზე დაიღუპა. <br><br> დავით გობეჯიშვილი საქართველოში 31 მარტს ჩამოასვენეს. დაღუპულ მეომარს პატივი მიაგეს ომის ვეტერანებმა საქართველოს სხვადასხვა რეგიონიდან, პოლიტიკოსებმა და მოქალაქეებმა.  <br><br> ის 3 აპრილს, ტყიბულში, საგვარეულო სასაფლაოზე სამხედრო პატივით დაკრძალეს. '
+        },
+
+        {
+            id: 3,
+            data_id: 4,
+            mainUserId: 5,
+            age: '47 წლის',
+            img_src: 'https://gdb.rferl.org/E4375905-A181-4399-8104-B38684F2C227.jpg',
+            title: 'დავით მენაბდიშვილი',
+            text: 'დაიღუპა 9 აპრილს, ხარკოვთან, საარტილერიო შეტევისას. ის ბატალიონ „კარპატსკა სიჩის“ მებრძოლი იყო და ხარკოვის გათავისუფლების ოპერაციაში მონაწილეობდა.  <br><br> დავითი 2014 წელს დონბასსა და ლუგანსკში იბრძოდა, მანამდე, 2008 წელს, რუსეთ-საქართველოს ომში. 2014 წლამდე, განსაკუთრებულ დავალებათა დეპარტამენტში მუშაობდა, სპეცრაზმელი იყო.   <br><br> გიორგი მენაბდიშვილი, დავითის შვილი:  <br><br> „შეიძლება ითქვას, რომ მამა ჩუმად წავიდა ომში. ჩემი მშობლები ასურეთში ცხოვრობენ. უკვე თბილისში იყო, როცა დამირეკა, უკრაინაში მივდივარო. წინა დღეს ველაპარაკე, წასვლაზე არაფერი უთქვამს. მხოლოდ ის მითხრა, უკრაინაში ბავშვები იხოცებიან, ბავშვებს ბომბავენ და აქ ვერ ვიჯდები წყნარადო. მეორე დღეს დამირეკა და შემატყობინა, რომ წუთი-წუთზე მიფრინავდა. გამოცდილი მებრძოლი იყო. სულ მჯეროდა, რომ მამას ტყვია ვერ მოკლავდა, რადგან თუკი რაიმე იარაღი არსებობს, ყველას ფლობდა“.  <br><br> გიორგი მამას გარდაცვალებამდე ერთი დღით ადრე ელაპარაკა: <br><br> „მამას მე დავურეკე. ვიცოდი, რომ იზიუმში იყო, ცხელ წერტილში, იბომბებოდა იქაურობა და მაინტერესებდა როგორ იყო, სად იყო. არ დაუმალავს, რომ რთული სიტუაცია იყო. ბოლოს მითხრა, ტელეფონი მიჯდებაო და გავითიშეთ. ეს იყო ჩვენი ბოლო საუბარი“. <br><br> მეორე დღეს, მამის გარდაცვალების ამბავი გიორგის უკრაინაში მებრძოლმა ქართველმა სამხედრომ, ვანო ნადირაძემ შეატყობინა. მათ უთხრეს, რომ დავითი დრონიდან განხორციელებული დაბომბვის დროს დაიღუპა. ბომბი მასთან ძალიან ახლოს, დაახლოებით 2 მეტრის დაშორებით ჩამოვარდა. ქართველი მებრძოლი ადგილზევე დაიღუპა.  <br><br> მეორე დღეს, მამის გარდაცვალების ამბავი გიორგის უკრაინაში მებრძოლმა ქართველმა სამხედრომ, ვანო ნადირაძემ შეატყობინა. მათ უთხრეს, რომ დავითი დრონიდან განხორციელებული დაბომბვის დროს დაიღუპა. ბომბი მასთან ძალიან ახლოს, დაახლოებით 2 მეტრის დაშორებით ჩამოვარდა. ქართველი მებრძოლი ადგილზევე დაიღუპა. <br><br> საქართველოში 15 აპრილს ჩამოასვენეს. '
+        },
+        {
+            id: 4,
+            data_id: 5,
+            mainUserId: 6,
+            age: '21 წლის',
+            img_src: 'https://gdb.rferl.org/E4375905-A181-4399-8104-B38684F2C227.jpg',
+            title: 'ნიკოლოზ შანავა',
+            text: 'დაიღუპა 9 აპრილს, ხარკოვთან, საარტილერიო შეტევისას. ის ბატალიონ „კარპატსკა სიჩის“ მებრძოლი იყო და ხარკოვის გათავისუფლების ოპერაციაში მონაწილეობდა <br><br> ნიკოლოზი დრონებით დაბომბვას ემსხვერპლა. კონტუზია მიიღო მასთან ერთად მებრძოლმა მისმა ძმამ, 19 წლის ლუკამაც.  <br><br> „კარპატსკა სიჩის“ 12-წევრიანი დანაყოფის მეთაურმა გოჩა ხორავამ თქვა, რომ ნიკოლოზი „ხარკოვთან, უთანასწორო თავდასხმისას“ დაიღუპა - „ერთ კაცზე 20 ჭურვი მოდიოდა“.  <br><br> ძმები უკრაინაში 15 მარტს წავიდნენ. ოჯახის წევრებს თავიანთი გადაწყვეტილების შესახებ გამგზავრებამდე ერთი დღით ადრე შეატყობინეს. <br><br>  სალომე ვეფხვაძე, ნიკოლოზის მამიდაშვილი: <br><br> „მშობლებმა არაფერი იცოდნენ. ფაქტის წინაშე დააყენეს, როცა ბილეთებითა და პასპორტებით ხელში მივიდნენ სახლში და უთხრეს, ხვალ მივდივართო. ორივეს მტკიცედ ჰქონდა გადაწყვეტილი, რომ იქ მიდიოდნენ არა მხოლოდ უკრაინის დასაცავად, არამედ საქართველოსთვისაც“.  <br><br>ნიკოლოზმა უკრაინაში წასვლამდე ორი დღით ადრე დაასრულა სამხედრო სავალდებულო სამსახური. ერთი წლის განმავლობაში ის მუხროვანის სამხედრო ბაზაზე მსახურობდა. ნიკოლოზი ბავშვობიდან ჭიდაობდა ჯერ თავისუფალ, შემდეგ კი ბერძნულ-რომაულ სტილში, იყო საქართველოს ჩემპიონი.   <br><br>  ნიკა მშობლებს უკანასკნელად გარდაცვალებამდე სამი დღით ადრე ელაპარაკა.  <br><br>საქართველოში 15 აპრილს ჩამოასვენეს.'
+        },
+        {
+            id: 5,
+            data_id: 0,
+            mainUserId: 1,
+            age: '53 წლის',
+            img_src: 'https://gdb.rferl.org/E4375905-A181-4399-8104-B38684F2C227.jpg',
+            title: 'დავით რატიანი',
+            text: 'დაიღუპა 18 მარტს, უკრაინის ჩრდილო-დასავლეთით, ირპენის ფრონტზე, ნაღმმტყორცნებიდან გახსნილი ცეცხლის შედეგად. თბილისში 26 მარტს ჩამოასვენეს.  <br><br> დავით რატიანის დაღუპვის შემდეგ, სოციალურ ქსელში დაწერა მისმა თანამებრძოლმა, უკრაინელმა ჟურნალისტმა ალექსეი ბობროვნიკოვმა: <br><br> „დათომ თან წაიყოლა რამდენიმე ოკუპანტი. ტყვიამფრქვევიდან ისროდა. იცხოვრა გმირულად და გმირულად დაიღუპა: ფრანგ ჯარისკაცს, რომელსაც ფეხი დაზიანებული ჰქონდა, პუნქტამდე მისვლაში დაეხმარა. დათო ადგილზე გარდაიცვალა. ის იყო ძლიერი, მშვიდი, თავმდაბალი, მოწესრიგებული და კეთილი“.<br><br> დარჩა მეუღლე ია შავიშვილი და ოთხი შვილი. <br><br> დავით რატიანი უკრაინაში, ომის დაწყებიდან რამდენიმე დღეში, პირველ მარტს წავიდა და უცხოელ მოხალისეთა რაზმში ჩაეწერა. <br><br> ქმრის სიკვდილი მისმა მეუღლემ, იამ, ფეისბუკიდან შეიტყო: <br><br> „18 მარტს, დილით, ინფორმაცია გავრცელდა, ორი ქართველი მებრძოლი დაიღუპაო, მაგრამ ვერაფრით დავუშვი, რომ ერთ-ერთი დათო იქნებოდა. ისეთი გამოცდილი სამხედრო იყო, ვერ წარმოვიდგენდი, რომ რამე დაემართებოდა. ალბათ არ მქონდა გათავისებული, რა სასაკლაოზე იყო წასული. სოციალურ ქსელში ისევ მწვანედ ენთო მისი მესენჯერი. თან გაფრთხილებული ვყავდი, ერთი-ორი დღე რომ ვერ გიპასუხო, პანიკაში არ ჩავარდეო. ამის იმედი მქონდა. მაგრამ მაინც ავფორიაქდი. ვერაფრით რომ ვეღარ დავუკავშირდი, ბოლოს ნადიმ ხმალაძეს (უკრაინაში მებრძოლი ქართველი - რ.თ.) მივწერე, დათოს ვერ ვპოულობ-მეთქი. მის პასუხს ველოდებოდი და თან ფეისბუკს ვათვალიერებდი და უცებ წავაწყდი დათოს სურათს და მისი სურათის ქვეშ ხალხის კომენტარებს, „ვაიმე, დათო“... მივხვდი, რაც მოხდა“.   <br><br>აფხაზეთიდან დევნილი დავით რატიანი 25 წელი მსახურობდა საქართველოს შეიარაღებულ ძალებში. 90-იან წლებში იბრძოდა აფხაზეთში. 2008 წელს, აგვისტოს ომში.  <br><br> ია შავიშვილი: „2008 წელს, როცა დათო ომში იყო, სწორედ მაშინ გავიგე, რომ მეორე შვილზე ვიყავი ორსულად. ისე მოხდა, რომ რამდენიმე დღის განმავლობაში დათოსთან დაკავშირებას ვერ ვახერხებდი, მისგან არაფერი ვიცოდი. ისიც არ ვიცოდი, ცოცხალი იყო თუ მკვდარი. ფეხებიდან მიწას რომ გამოგაცლიან, ისეთი შეგრძნება მქონდა“.<br><br> 2014 წელს იმყოფებოდა ავღანეთში, ნატოს „მტკიცე მხარდაჭერის მისიაში“, სადაც, ერთ-ერთი ტერაქტის დროს, ადამიანის სიცოცხლის გადარჩენა შეძლო. <br><br> 50 წლის ასაკში, დავით რატიანმა სამხედრო სამსახური დატოვა და ერთ-ერთ კერძო კომპანიაში, მძღოლად მუშაობდა. იყო ანტისაოკუპაციო მოძრაობის „ძალა ერთობაშია“ წევრი. „სასტიკი უსამართლობის განცდა ჰქონდა იმის გამო, რაც საქართველოს ოკუპირებულ ტერიტორიებზე ხდებოდა“, - იხსენებს მისი მეუღლე, ია. <br><br> ია შავიშვილი: „წასვლამდე რამდენიმე საათით ადრე გვითხრა, რომ მიდიოდა. ჯერ მე მითხრა, ცალკე გამიყვანა. შევიცხადე, მაგრამ ისეთი მტკიცე სახე ჰქონდა და ისეთი კედელი აღმართა, ვიცოდი, ამ კედელს ვერ დავანგრევდი და ვერ გადავაფიქრებინებდი. მაინც ვთხოვე, იქნებ, ბავშვების გამო შეიკავო თავი-მეთქი, მაგრამ მიპასუხა, სწორედ ბავშვების გამო მივდივარ, ესენი რომ გაიზრდებიან, მერე ამათ არ დასჭირდეთ ბრძოლაო. იქ წყდება ახლა ჩვენი ბედიც და იქ უნდა ვიყო, რას მთხოვ, რომ ორმეტრიანი კაცი, სახლში, ბუჩქებში დავიმალოო? ზუსტად ეს სიტყვები მითხრა. დედამისმა საკუთარი ხელით შეუკრა ბარგი, ჩალაგებაში დაეხმარა. ცალკე გაიყვანა უფროსი ბიჭი, ჩემ გარეშე დაელაპარაკა“. <br><br> დათო ოჯახს ბოლოს 16 მარტს, ღამით, ვიდეოზარით ელაპარაკა: <br><br> „აქ ძალიან თოვდა და ვანახებდით, რამხელა თოვლი იყო. თვითონ თავისი ოთახი დაგვათვალიერებინა. წუხდა, ადამიანები თითო ჩანთით არიან გაქცეული სახლებიდან, საქართველოს ისტორია უკრაინაში მეორდებაო. ბავშვები დაარიგა, დედას დაუჯერეთო. მშვიდობიანი ღამე ვუსურვეთ ერთმანეთს და გავთიშეთ ტელეფონები. ეს იყო და ეს“...<br><br> დავით რატიანი 26 მარტს, თბილისში, ვარკეთილის სასაფლაოზე, სამხედრო პატივით დაკრძალეს.'
+        },
+        
+    ]
+
+
+
+
+    $(window).scroll(function () {
+        let currentSectionId;
+        let getCurrModalBoxClassArr = document.querySelectorAll('.avatar-image');
+        let currentClassId;
+
+        $('.each-history').each(function () {
+            if ($(this).position().top <= $(document).scrollTop() && ($(this).position().top + $(this).outerHeight()) > $(document).scrollTop()) {
+                currentSectionId = parseInt($(this).attr('main_user_id')); //7
+                // console.log("currentSectionId",currentSectionId)
+                // for (let i = 0; i < personsHistoryArray.length; i++) {
+                //     currentClassId = personsHistoryArray[i].mainUserId;
+                //     console.log("currentClassId",currentClassId)
+                //     $(`.avatar-image[main_user_id=${currentClassId}]`).removeClass('active');
+                //     if (currentClassId === currentSectionId) {
+                //         $(`.avatar-image[main_user_id=${currentClassId}]`).addClass('active');
+                //     }
+                // }
+            }
+
+        });
+
+        if ($(this).scrollTop() > 100) {
+            $('#scroll').fadeIn();
+        } else {
+            $('#scroll').fadeOut();
+        }
+
+
+
+        let headerConatinerHeight = $(".avatars-main-container").height() + $(".main-title").height();
+        if ($(window).scrollTop() >= headerConatinerHeight) {
+            $('main').addClass('vertical-align-header');
+            $('.avatars-main-container').addClass('avatars-vertical-container');
+            $('.avatar').addClass('vertical-align-avatars');
+            $('.non_avatar').css('display', 'block');
+            $('.non_avatar').css('display', 'none')
+            // $('.avatar-image').css('opacity', '0.5')
+        }
+        else {
+            $('main').removeClass('vertical-align-header');
+            $('.avatars-main-container').removeClass('avatars-vertical-container');
+            $('.avatar').removeClass('vertical-align-avatars');
+            $('.avatar img').removeClass('active');
+            $('.non_avatar').css('display', 'flex');
+            $('.avatar-image').css('opacity', '1')
+        }
+        return false;
+    });
+
+    $('#scroll').click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+
+    $(document).on('click', '.avatar-image', function () {
+        let currentAvatarMainUserId = parseInt($(this).attr('main_user_id'));
+        if ($('.avatars-main-container ').hasClass('avatars-vertical-container')) {
+            $('html,body').animate({
+                scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top
+            },
+                'slow');
+        } else {
+            let headerHeight = $(".avatars-main-container").height();
+            $('html,body').animate({
+                scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top - (headerHeight + 70)
+            },
+                'slow');
+        }
+
+    });
+
+    function drawSectionsMU(text, username, image, index, mainUserId, id, age) {
+        let eachSection = `
+            <div class='each-history' main_user_id="${mainUserId}" id="${id}">
+                <div class='username'>
+                    ${username}
+                </div>
+                <div class='history-age'>
+                    ${age}
+                </div>
+                
+                <div class='person-info'> 
+                    <div class='person-image'>
+                        <img src="${image}" alt="" >
+                    </div>
+                    <div class='person-history'>
+                        ${text}
+                    </div>
+                    
+                </div>
+            </div>
+        `
+        return eachSection;
+    }
+
+    function drawEachManMU(imageSrc, text, age, index, dataId, infoUrl, mainUserId) {
+        let eachMU = `
+            <div class="avatar " id=${index}>
+                <img src="${imageSrc}"  data_id='${dataId}' main_user_id='${mainUserId}' class="avatar-image">
+                <div class="entry-inner" id=${index} >
+					<h2>${text}</h2>
+                    <h3>${age}</h3>
+				</div>
+            </div>
+        `
+        return eachMU;
+
+    }
+    function drawEachNonInfoMu() {
+        let eachMU = `
+            <div class="non_avatar ">
+                <div>
+                </div>
+            </div>
+        `
+        return eachMU;
+    }
+    function mainFuncForMU() {
+        let eachAvatarMU;
+        for (let i = 0; i < 100; i++) {
+            if (peoplesInfo[i]) {
+                eachAvatarMU = drawEachManMU(peoplesInfo[i].portrait_img_src, peoplesInfo[i].userName, peoplesInfo[i].age, i, peoplesInfo[i].data_id, peoplesInfo[i].info_url, peoplesInfo[i].mainUserId);
+                $(".avatars-main-container").append(eachAvatarMU);
+
+            }
+            else {
+                let correctImgSrc = drawEachNonInfoMu();
+                $(".avatars-main-container").append(correctImgSrc);
+            }
+
+        }
+    }
+
+    function drawPersonSection() {
+        for (let i = 0; i < personsHistoryArray.length; i++) {
+            $(".section_common_container").append(drawSectionsMU(personsHistoryArray[i].text, personsHistoryArray[i].title, personsHistoryArray[i].img_src, i, personsHistoryArray[i].mainUserId, i, personsHistoryArray[i].age));
+        }
+    }
+
+    $(".avatars-main-container").on("mouseenter", ".avatar", function () {
+        let currentId = parseInt($(this).attr("id"));
+
+
+        let getCurrModalBoxClassArr = document.querySelectorAll('.entry-inner');
+        for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
+            let currentClassId = parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
+            if (currentId === currentClassId) {
+                $(`.avatar#${currentId} img`).css("z-index", "6")
+                $(`.avatar#${currentId} img`).css("opacity", "1")
+                $(getCurrModalBoxClassArr[i]).css("display", "block");
+            }
+            else {
+                $(getCurrModalBoxClassArr[i]).css("display", "none")
+            }
+
+        }
+    });
+
+    $(".avatars-main-container").on("mouseleave", ".avatar", function () {
+        let currentId = parseInt($(this).attr("id"));
+        let getCurrModalBoxClassArr = document.querySelectorAll('.entry-inner');
+        for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
+            let currentClassId = parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
+            $(`.avatar#${currentId} img`).css("z-index", "0")
+            // $(`.vertical-align-avatars#${currentId} img`).css("opacity", "0.5")
+            $(getCurrModalBoxClassArr[i]).css("display", "none");
+        }
+    });
+
+
+</script>
+
+</html>
