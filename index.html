@@ -253,16 +253,21 @@
         }
 
         .section_common_container {
+            padding-top: 1%;
             max-width: 50%;
             margin: 5% auto;
         }
-
+        .each-history{
+            display: flex;
+            flex-direction: column;
+            margin-top: 10%;
+        }
         .username {
             color: white;
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 2%;
-            padding-top: 14%;
+            padding-top: 3%;
         }
 
         .history-age {
@@ -285,11 +290,12 @@
         }
 
         .person-image {
-            width: 50%;
+            width: 70%;
+            margin: 0 auto;
         }
 
         .person-image img {
-            width: 350px;
+            width: 100%;
             margin: 0 20px 15px 0px;
             float: left;
         }
@@ -576,9 +582,6 @@
             <h2>რედაქტორი </h2>
             <p>ნინო ჯაფიაშვილი </p>
             <br>
-            <h2>ილუსტრატორი</h2>
-            <p>ანა ჯიბლაძე</p>
-            <br>
             <h2>ვებ-დეველოპერი</h2>
             <p>სოფიკო ფხიკიძე</p>
         </div>
@@ -593,7 +596,7 @@
         mainFuncForMU();
         setTimeout(() => {
             $(".loader-holder").css("display", "none");
-        }, 100);
+        }, 1000);
         drawPersonSection();
         
     });
@@ -793,6 +796,9 @@
     function drawSectionsMU(text, username, image, index, mainUserId, id, age) {
         let eachSection = `
             <div class='each-history' main_user_id="${mainUserId}" id="${id}">
+                <div class='person-image'>
+                    <img src="${image}" alt="" >
+                </div>
                 <div class='username'>
                     ${username}
                 </div>
@@ -801,9 +807,6 @@
                 </div>
                 
                 <div class='person-info'> 
-                    <div class='person-image'>
-                        <img src="${image}" alt="" >
-                    </div>
                     <div class='person-history'>
                         ${text}
                     </div>
