@@ -1483,16 +1483,24 @@
     $(document).on('click', '.avatar-image', function () {
         let currentAvatarMainUserId = parseInt($(this).attr('main_user_id'));
         let headerHeight = $(".avatars-main-container").height();
-        if ($('.avatars-main-container ').hasClass('avatars-vertical-container')) {
+        if ($('.avatars-main-container').hasClass('avatars-vertical-container')) {
             $('html,body').animate({
                 scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top - (headerHeight + 30)
             },
                 'slow');
         } else {
-            $('html,body').animate({
-                scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top - (headerHeight + 150)
-            },
-                'slow');
+            if ($(window).width() >= 900) {
+                $('html,body').animate({
+                    scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top - (headerHeight + 150)
+                },
+                    'slow');
+            } else {
+                $('html,body').animate({
+                    scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top
+                },
+                    'slow');
+            }
+
         }
 
     });
